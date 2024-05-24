@@ -123,8 +123,9 @@ To analyze the data for the prediction that the owner is interested in Predictio
 
 **1.	Machine Learning Methods**
 
-	This kind of dataset is very common in the field of process optimization and manufacturing. The goal is often to create a predictive model that can guide the settings of the process variables (like temperature, pressure, etc.) to ensure the best quality output. Machine learning models, such as regression or classification algorithms, are typically applied to such data to predict the 'Result' based on the various features.
-	Logistics Regression (Logit) [6]: Logistics regression is a statistical method used for classification problems, where the output variable is categorical. In this case, the output variable is the quality of the product, which can be categorized as ‘good’ or ‘bad’. Logistic regression is a suitable choice for this case due to its simplicity, effectiveness, and interpretability.
+This kind of dataset is very common in the field of process optimization and manufacturing. The goal is often to create a predictive model that can guide the settings of the process variables (like temperature, pressure, etc.) to ensure the best quality output. Machine learning models, such as regression or classification algorithms, are typically applied to such data to predict the 'Result' based on the various features.
+
+Logistics Regression (Logit) [6]: Logistics regression is a statistical method used for classification problems, where the output variable is categorical. In this case, the output variable is the quality of the product, which can be categorized as ‘good’ or ‘bad’. Logistic regression is a suitable choice for this case due to its simplicity, effectiveness, and interpretability.
 
 **2.	Statistical Methods**
 
