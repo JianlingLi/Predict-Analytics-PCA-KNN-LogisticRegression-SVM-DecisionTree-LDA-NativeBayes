@@ -357,6 +357,13 @@ Methods:
 •	Model performance comparation: Logit model, Naïve Bays, KNN, SVM, Decision tree, LDA
 
 
+
+
+
+
+
+
+
 **BIBLIOGRAPHY**
 
 [1]	Abbott. D., Komp. W.J. (2014). Applied Predictive Analytics. Chapter 3, Page 46-50 
