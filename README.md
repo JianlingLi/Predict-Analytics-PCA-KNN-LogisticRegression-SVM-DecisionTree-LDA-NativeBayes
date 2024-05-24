@@ -136,7 +136,7 @@ Based on the correlation heatmap Figure3, it can be observed that Feature2 and F
 
   Figure 7
 
-	Feature11 and Feature22 do not have strong positive correlation with each other in Figure5, their scatters are discrete compared with above four pairs of features. However, they have individually positive correlation with the target variable (‘Result’). Feature22 has a correlation coefficient 0.55 with the target variable, which is the most highly correlated to influence the result. And Feature 11 follows with a correlation coefficient at 0.54, also has positive correlation with the result. 
+Feature11 and Feature22 do not have strong positive correlation with each other in Figure5, their scatters are discrete compared with above four pairs of features. However, they have individually positive correlation with the target variable (‘Result’). Feature22 has a correlation coefficient 0.55 with the target variable, which is the most highly correlated to influence the result. And Feature 11 follows with a correlation coefficient at 0.54, also has positive correlation with the result. 
 
  ![image](https://github.com/JianlingLi/Predict-Analytics/assets/122969933/190ba22d-df88-48ed-8901-e372b3c970e3)
 
@@ -144,15 +144,18 @@ Based on the correlation heatmap Figure3, it can be observed that Feature2 and F
 
 **2.2	Analysis of Variance**
 
-	ANOVA [3] is a statistical method used to compare the means of three or more groups to see if at least one group mean is statistically different from the others. When the target variable has more than two categories (as is the case with ‘Result’), 
-	A low p-value (typically < 0.05) would indicate that there is a statistically significant difference in the mean values of 'Feature11' or 'Feature22' across the different categories of 'Result'. A high p-value would suggest that any mean differences are likely due to random chance, and the feature may not be as useful for discriminating between 'Result' categories.
-	The selection of Feature11 and 12 to implement ANOVA is because of their individual correlation with the target variable are higher than other features. In Figure 9, both Feature11 and Feature22, the F-value is quite high (87.61 for Feature11 and 77.78 for Feature22), and the p-value zero. This suggests that there are significant differences in the means of these features across the different result categories.
+ANOVA [3] is a statistical method used to compare the means of three or more groups to see if at least one group mean is statistically different from the others. When the target variable has more than two categories (as is the case with ‘Result’). 
+
+A low p-value (typically < 0.05) would indicate that there is a statistically significant difference in the mean values of 'Feature11' or 'Feature22' across the different categories of 'Result'. A high p-value would suggest that any mean differences are likely due to random chance, and the feature may not be as useful for discriminating between 'Result' categories.
+
+The selection of Feature11 and 12 to implement ANOVA is because of their individual correlation with the target variable are higher than other features. In Figure 9, both Feature11 and Feature22, the F-value is quite high (87.61 for Feature11 and 77.78 for Feature22), and the p-value zero. This suggests that there are significant differences in the means of these features across the different result categories.
 
  ![image](https://github.com/JianlingLi/Predict-Analytics/assets/122969933/fbfe8f6a-4e67-4dbf-8d68-9c24525cc6b1)
 
  Figure 9
  
-  Figure 9 displays the spread and central tendency of Feature11 and 22 with individual Result category. For Feature11, the boxplot indicates a higher median and greater variability for the highest category, which could be class ‘5’ on the boxplot, suggesting that Feature11 could be a significant predictor for the particular outcome class ‘5’. For Feature22, the median values seem to be more consistent across the results, but the highest category shows a higher spread, which is also reflected in the significant F-value from the ANOVA.
+Figure 9 displays the spread and central tendency of Feature11 and 22 with individual Result category. For Feature11, the boxplot indicates a higher median and greater variability for the highest category, which could be class ‘5’ on the boxplot, suggesting that Feature11 could be a significant predictor for the particular outcome class ‘5’. For Feature22, the median values seem to be more consistent across the results, but the highest category shows a higher spread, which is also reflected in the significant F-value from the ANOVA.
+
 Another selection of Feature23 and 24 is due to their input variable property. In fact, ANOVA can be particularly useful for assessing whether different groups (in this case, defined by the target variable 'Result') have different mean levels of these input variables. This can help determine if there's a statistically significant effect of these input variables on the outcome. Figure10 shows that Feature23 has a F-value 74.89 that is much higher than Feature24 (7.30), and their P-value is very close to zero. This also suggests that there are significant differences in the means of these features across the different result categories. The boxplot displays both input variables are more trends to predict outcome class 1, 2, 3.
  
  ![image](https://github.com/JianlingLi/Predict-Analytics/assets/122969933/68148540-ab51-4763-bfb9-d6299f76408a)
@@ -161,8 +164,9 @@ Another selection of Feature23 and 24 is due to their input variable property. I
 
 **3.	Visualizations**
 
-	Scatter plots: Scatter plots can be used to visualize the relationship between pairs of variables. This can help identify potential correlations between the input variables and the output variable.
-	Histograms: Histograms can be used to visualize the distribution of a single variable. This can help identify any non-normal distributions or outliers.
+Scatter plots: Scatter plots can be used to visualize the relationship between pairs of variables. This can help identify potential correlations between the input variables and the output variable.
+
+Histograms: Histograms can be used to visualize the distribution of a single variable. This can help identify any non-normal distributions or outliers.
 
 **B.	Data Partitioning**
 
@@ -190,25 +194,29 @@ The left-hand side on Figure11 displays a learning curve for the model, which in
 
  Figure 11
  
-	The table on the right-hand side on Figure11 displays a comparison of the actual results (target variable ‘Result’) and the model’s predictions. It is observed the model appears to have high accuracy for class ‘1’, but poor recall for other classes. This could be a result of class imbalance, where the model is biased towards the most frequent class in the training data, which seems to be class ‘1’ based on previous context. Given the misclassification of other classes, it would be beneficial to look at more comprehensive performance metrics such as the confusion matrix, precision, recall, F1 score for each class, and overall accuracy to better understand the model’s performance. This will be further evaluated in the next chapter.
+The table on the right-hand side on Figure11 displays a comparison of the actual results (target variable ‘Result’) and the model’s predictions. It is observed the model appears to have high accuracy for class ‘1’, but poor recall for other classes. This could be a result of class imbalance, where the model is biased towards the most frequent class in the training data, which seems to be class ‘1’ based on previous context. Given the misclassification of other classes, it would be beneficial to look at more comprehensive performance metrics such as the confusion matrix, precision, recall, F1 score for each class, and overall accuracy to better understand the model’s performance. This will be further evaluated in the next chapter.
 	Next is to implement the hyperparameter tuning the logit model by importing GridSearchCV from the scikit-learn library:
 •	Define the parameter grid. 
 •	Initialize the logistic regression classifier.
 •	Initialize GridSearchCV
 •	Fit the model in the training set.
 •	Evaluate the model in a validation set with feature scaled where the data have never been seen.
-	Now the model has been fine-tuned for the multi-classification problem, it exhibits the classification metrics obtained from the validation set in the following report.
+
+Now the model has been fine-tuned for the multi-classification problem, it exhibits the classification metrics obtained from the validation set in the following report.
 
 ![image](https://github.com/JianlingLi/Predict-Analytics/assets/122969933/491273ce-5632-4ff3-add6-8eb185ff2b6e)
 
  
-	Above classification report provides precision, recall, and F1-score for each class, along with the support which indicates the number of true instances for each label. Notably, after tuning the logit model, and apply the model in the small validation set that has not been used in the training/tuning, the model achieves high precision and recall for class ‘1’ and class ‘5’. This may be indicative of a good fit for these classes. And the model also can predict Class ‘2’ even if it has a moderate recall. However, the absence of class ‘3’ predictions suggests that the model fails to identify this class altogether. Anyway, the model displays obvious ability to predict more classes in an unseen validation set after being training and tunning.
-	The ‘Confusion Matrix’ further elucidates the model’s performance, revealing a tendency to classify instances into class ‘1’, which could be due to a class imbalance. The perfect scores for class ‘5’ are noteworthy, but given that it only represents a single instance, this result should be treated with caution.
-	Overall, the logit model demonstrates an 80% accuracy rate, which seemingly high, but does not tell the full story. The weighted average F1-score of 0.82 is more reflective of the model’s true performance, accounting for class imbalance by weighting the F1-score of each class by its support. The model’s tendency to favor the majority class (class ‘1’) suggests the need for strategies to address class imbalance, such as resampling methods or the use of class weights in model training. 
+Above classification report provides precision, recall, and F1-score for each class, along with the support which indicates the number of true instances for each label. Notably, after tuning the logit model, and apply the model in the small validation set that has not been used in the training/tuning, the model achieves high precision and recall for class ‘1’ and class ‘5’. This may be indicative of a good fit for these classes. And the model also can predict Class ‘2’ even if it has a moderate recall. However, the absence of class ‘3’ predictions suggests that the model fails to identify this class altogether. Anyway, the model displays obvious ability to predict more classes in an unseen validation set after being training and tunning.
+
+The ‘Confusion Matrix’ further elucidates the model’s performance, revealing a tendency to classify instances into class ‘1’, which could be due to a class imbalance. The perfect scores for class ‘5’ are noteworthy, but given that it only represents a single instance, this result should be treated with caution.
+
+Overall, the logit model demonstrates an 80% accuracy rate, which seemingly high, but does not tell the full story. The weighted average F1-score of 0.82 is more reflective of the model’s true performance, accounting for class imbalance by weighting the F1-score of each class by its support. The model’s tendency to favor the majority class (class ‘1’) suggests the need for strategies to address class imbalance, such as resampling methods or the use of class weights in model training. 
 
 **D.	Dimensionality Reduction with PCA**
 
 Principal Component Analysis (PCA) [2] is a dimensionality reduction technique that can be used to reduce the number of features in the dataset. This can be beneficial if the dataset is high-dimensional, as it can simplify the analysis and improve the performance of machine learning models.
+
 PCA is performed to reduce the 24 features space to two principal components (PCs), which were then used for visualization and as inputs to the logit model. This transformation aims to capture the most significant variance in the data with fewer features, reducing computational complexity and potentially improving model performance. The dimension reduction by using PCA is addressed as below steps:
 •	Initialize PCA and fit the model to the scaled training set.
 •	Initialize the logit model.
@@ -273,8 +281,6 @@ Linear Discriminant Analysis (LDA) [7, 10] is a technique for multi-class classi
  
 It appears that the LDA model has found a linear decision boundary that attempts to best separate the different classes based on the training data. There are clear overlaps between the classes, especially between classes 1, 2, and 3, which indicates that these classes are not perfectly linearly separable. This might suggest the need for either a more complex model or additional feature engineering to improve separation.
 
-
-
 **V	RESULTS AND EVALUATION**
 
 Further exploration of the data on different machine learning models, which assists to evaluate the learning and prediction capabilities of different models for a given dataset. This will provide a comprehensive overview to select the most appropriate model to trained on the dataset and achieve the most accurate predictions, particularly when aiming at a certain class prediction.
@@ -319,8 +325,11 @@ The table (Figure19) is a concise summary of the model’s performance intuitive
  Figure 19
  
 Accuracy: Measures the percentage of total correct predictions. The decision Tree model has the highest accuracy (93.33%), indicating it correctly predicted the most instances. Followed is KNN with 86.87%. LDA has the lowest accuracy (66.67%), making it the least accurate model for the dataset.
+
 Precision: Indicates the ratio of true positive predictions to the total positive predictions made. It shows how precise a model is in predicting positive instances. Again, decision tree has the highest precision (94.07%), which leads almost 5% of the followed KNN (89.33%). The lowest precision is LDA (67.27%).
+
 Recall (Sensitivity): Measures the ratio of true positive predictions to all actual positive instances. It shows how well the model can find all the positive instances. Similar to precision, the decision tree model leads with a recall of 93.33%, and LDA is at the bottom with 66.67%.
+
 F1_score: The harmonic mean of precision and recall, this metric considers both false positives and false negatives. It is particularly useful when the class distribution is uneven. The decision tree model scores the highest F1-score (0.93), reflecting a balanced precision and recall. LDA has the lowest F1_score (0.64), indicating it is not as effective in balancing recall and precision.
 
 Overall, whether in terms of model learning ability, or comprehensive assessment of accuracy, precision, recall or F1_score, it can conclude that decision tree and KNN can be the model option for further training or development in the given dataset. While LDA shows lowest performance metrics as seen in all the previous analysis. However, each model’s performance might vary with changes in hyperparameters, feature engineering, or if cross-validation is applied, so further tuning and validation are recommended before finalizing a model for deployment.
